@@ -313,6 +313,6 @@ HTMLWidgets.widget({
 function separationFun(a, b) {
   var width = a.data.SizeOfNode + b.data.SizeOfNode,
   // Scale distance to SizeOfNode, if defined
-  distance = (width || 20) / 10;
+  distance = (width || 50) / 50;
   return (a.parent === b.parent ? 1 : distance);
 };
