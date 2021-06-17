@@ -311,8 +311,8 @@ HTMLWidgets.widget({
 });
 
 function separationFun(a, b) {
-  var height = a.data.SizeOfNode + b.data.SizeOfNode,
+  var width = a.data.SizeOfNode + b.data.SizeOfNode,
   // Scale distance to SizeOfNode, if defined
-  distance = (height || 20) / 30;
+  distance = (width || 20) / 10;
   return (a.parent === b.parent ? 1 : distance);
 };
