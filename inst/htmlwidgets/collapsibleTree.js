@@ -174,9 +174,9 @@ HTMLWidgets.widget({
       // Creates a curved (diagonal) path from parent to the child nodes
       function diagonal(s, d) {
 
-        path = 'M ' + s.x + ' ' + s.y + ' C ' +
-        (s.x + d.x)  + ' ' + s.y + ', ' +
-        (s.x + d.x)  + ' ' + d.y + ', ' +
+        path = 'M ' + s.x + ' ' + (s.y + d.y) + ' C ' +
+        s.x  + ' ' + (s.y + d.y) ', ' +
+        s.x +  ' ' + d.y + ', ' +
         d.x + ' ' + d.y;
 
         return path
