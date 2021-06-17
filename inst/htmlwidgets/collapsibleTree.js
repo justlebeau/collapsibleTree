@@ -174,10 +174,10 @@ HTMLWidgets.widget({
       // Creates a curved (diagonal) path from parent to the child nodes
       function diagonal(s, d) {
 
-        path = 'M ' + s.y + ' ' + s.x + ' C ' +
-        (s.y + d.y) / 2 + ' ' + s.x + ', ' +
-        (s.y + d.y) / 2 + ' ' + d.x + ', ' +
-        d.y + ' ' + d.x;
+        path = 'M ' + s.x + ' ' + s.y + ' C ' +
+        (s.x + d.x) / 2 + ' ' + s.y + ', ' +
+        (s.x + d.x) / 2 + ' ' + d.y + ', ' +
+        d.x + ' ' + d.y;
 
         return path
       }
@@ -237,8 +237,8 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         // Assigns parent, children, height, depth
         root = d3.hierarchy(x.data, function(d) { return d.children; });
-        root.y0 = height / 2;
-        root.x0 = 0;
+        root.x0 = height / 2;
+        root.y0 = 0;
 
         // Attach options as a property of the instance
         options = x.options;
