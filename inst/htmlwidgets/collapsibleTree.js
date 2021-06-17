@@ -258,7 +258,7 @@ HTMLWidgets.widget({
         if (!options.linkLength) {
           options.linkResponsive = true
           options.linkLength = widthMargin / options.hierarchy.length
-          if (options.linkLength < 10) {
+          if (options.linkLength < 8) {
             options.linkLength = 5 // Offscreen or too short
           }
         }
@@ -293,8 +293,8 @@ HTMLWidgets.widget({
         // Calculate a reasonable link length, if not originally specified
         if (options.linkResponsive) {
           options.linkLength = widthMargin / options.hierarchy.length
-          if (options.linkLength < 10) {
-            options.linkLength = 10 // Offscreen or too short
+          if (options.linkLength < 8) {
+            options.linkLength = 5 // Offscreen or too short
           }
         }
         // Update the treemap to fit the new canvas size
@@ -313,6 +313,6 @@ HTMLWidgets.widget({
 function separationFun(a, b) {
   var height = a.data.SizeOfNode + b.data.SizeOfNode,
   // Scale distance to SizeOfNode, if defined
-  distance = (height || 20) / 10;
+  distance = (height || 20) / 30;
   return (a.parent === b.parent ? 1 : distance);
 };
