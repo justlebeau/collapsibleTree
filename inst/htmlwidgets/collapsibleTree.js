@@ -175,9 +175,9 @@ HTMLWidgets.widget({
       function diagonal(s, d) {
 
         path = 'M ' + s.x + ' ' + s.y + ' C ' +
-        (s.x + d.x)  + ' ' + s.y/2 + ', ' +
-        (s.x + d.x)  + ' ' + d.y/2 + ', ' +
-        d.x + ' ' + d.y;
+        (s.x + d.x)  + ' ' + s.y + ', ' +
+        (s.x + d.x)  + ' ' + d.y + ', ' +
+        d.x + ' ' + d.y/2;
 
         return path
       }
@@ -257,7 +257,7 @@ HTMLWidgets.widget({
         // Calculate a reasonable link length, if not otherwise specified
         if (!options.linkLength) {
           options.linkResponsive = true
-          options.linkLength = widthMargin / options.hierarchy.length
+          options.linkLength = heightMargin / options.hierarchy.length
           if (options.linkLength < 10) {
             options.linkLength = 10 // Offscreen or too short
           }
