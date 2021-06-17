@@ -80,7 +80,7 @@ HTMLWidgets.widget({
 
       // Add labels for the nodes
       nodeEnter.append('text')
-      .attr('dy', '.35em')
+      .attr('dy', '.45em')
       .attr('y', function(d) {
         // Scale padding for label to the size of node
         var padding = (d.data.SizeOfNode || 10) + 3
