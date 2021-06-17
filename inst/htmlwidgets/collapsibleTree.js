@@ -81,7 +81,7 @@ HTMLWidgets.widget({
       // Add labels for the nodes
       nodeEnter.append('text')
       .attr('dy', '.35em')
-      .attr('x', function(d) {
+      .attr('y', function(d) {
         // Scale padding for label to the size of node
         var padding = (d.data.SizeOfNode || 10) + 3
         return d.children || d._children ? -1 * padding : padding;
@@ -237,7 +237,7 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         // Assigns parent, children, height, depth
         root = d3.hierarchy(x.data, function(d) { return d.children; });
-        root.x0 = height / 2;
+        root.x0 = 0;
         root.y0 = 0;
 
         // Attach options as a property of the instance
@@ -257,9 +257,9 @@ HTMLWidgets.widget({
         // Calculate a reasonable link length, if not otherwise specified
         if (!options.linkLength) {
           options.linkResponsive = true
-          options.linkLength = heightMargin / options.hierarchy.length
+          options.linkLength = widthMargin / options.hierarchy.length
           if (options.linkLength < 10) {
-            options.linkLength = 10 // Offscreen or too short
+            options.linkLength = 5 // Offscreen or too short
           }
         }
 
