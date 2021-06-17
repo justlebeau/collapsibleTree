@@ -177,7 +177,7 @@ HTMLWidgets.widget({
         path = 'M ' + s.x + ' ' + s.y + ' C ' +
         (s.x + d.x)  + ' ' + s.y + ', ' +
         (s.x + d.x)  + ' ' + d.y + ', ' +
-        d.x + ' ' + d.y/2;
+        d.x + ' ' + d.y;
 
         return path
       }
