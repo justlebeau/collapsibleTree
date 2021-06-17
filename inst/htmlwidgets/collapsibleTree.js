@@ -175,8 +175,8 @@ HTMLWidgets.widget({
       function diagonal(s, d) {
 
         path = 'M ' + s.x + ' ' + s.y + ' C ' +
-        (s.x + d.x) / 2 + ' ' + s.y + ', ' +
-        (s.x + d.x) / 2 + ' ' + d.y + ', ' +
+        (s.x + d.x)  + ' ' + s.y/2 + ', ' +
+        (s.x + d.x)  + ' ' + d.y/2 + ', ' +
         d.x + ' ' + d.y;
 
         return path
