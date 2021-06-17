@@ -237,8 +237,8 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         // Assigns parent, children, height, depth
         root = d3.hierarchy(x.data, function(d) { return d.children; });
-        root.x0 = height / 2;
-        root.y0 = 0;
+        root.y0 = height / 2;
+        root.x0 = 0;
 
         // Attach options as a property of the instance
         options = x.options;
