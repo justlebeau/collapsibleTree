@@ -1,4 +1,4 @@
-Package: collapsibleTreeVertical
+Package: collapsibleTree
 Type: Package
 Title: Interactive Collapsible Tree Diagrams using 'D3.js'
 Version: 0.1.7
