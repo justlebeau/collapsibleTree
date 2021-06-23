@@ -83,8 +83,9 @@ HTMLWidgets.widget({
       .attr('dy', '-.55em')
       .attr('y', function(d) {
         // Scale padding for label to the size of node
-        var padding = (d.data.SizeOfNode || 10) + 3
-        return d.children || d._children ? -1 * padding : padding;
+         var padding = (d.data.SizeOfNode || 10) + 3
+        //var padding = (-15 || 10) + 3
+        return d.children || d._children ? -1 * padding : -1 * padding;
       })
       .attr('text-anchor', function(d) {
         return d.children || d._children ? 'end' : 'start';
