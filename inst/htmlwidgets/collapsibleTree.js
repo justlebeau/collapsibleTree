@@ -75,17 +75,21 @@ HTMLWidgets.widget({
         return d.data.fill || (d._children ? options.fill : '#fff');
       })
       .style('stroke-width', function(d) {
-        return d._children ? 3 : 1;
+        return d._children ? 2 : 1;
       });
 
       // Add labels for the nodes
       nodeEnter.append('text')
-      .attr('dy', '-.55em')
+      //.attr('dy', '-.45em')
+       .attr('dy', '-.65em')
+       .attr('transform','rotate(-45)')
+      //.attr('dx', '-1.55em')
       .attr('y', function(d) {
         // Scale padding for label to the size of node
          var padding = (d.data.SizeOfNode || 10) + 3
         //var padding = (-15 || 10) + 3
-        return d.children || d._children ? -1 * padding : -1 * padding;
+        //return d.children || d._children ? -1 * padding : -1 * padding;
+        return d.children || d._children ? -1 * padding : padding;
       })
       .attr('text-anchor', function(d) {
         return d.children || d._children ? 'end' : 'start';
@@ -101,6 +105,7 @@ HTMLWidgets.widget({
       .duration(duration)
       .attr('transform', function(d) {
         return 'translate(' + d.x + ',' + d.y + ')';
+      //  return 'rotate(' + (d.x-90) + ')translate(' + d.x + ',' + d.y + ')rotate(' + (-d.x + 90) +')';
       });
 
       // Update the node attributes and style
@@ -112,7 +117,7 @@ HTMLWidgets.widget({
         return d.data.fill || (d._children ? options.fill : '#fff');
       })
       .style('stroke-width', function(d) {
-        return d._children ? 3 : 1;
+        return d._children ? 2 : 1;
       })
       .attr('cursor', 'pointer');
 
@@ -223,8 +228,8 @@ HTMLWidgets.widget({
         )
         // Make the tooltip font size just a little bit bigger
         .style('font-size', (options.fontSize + 1) + 'px')
-        .style('left', (d3.event.layerX) + 'px')
-        .style('top', (d3.event.layerY - 30) + 'px');
+        .style('left', (d3.event.pageX+2) + 'px')
+        .style('top', (d3.event.pageY-20) + 'px');
       }
       // Hide tooltip on mouseout
       function mouseout(d) {
@@ -238,7 +243,7 @@ HTMLWidgets.widget({
       renderValue: function(x) {
         // Assigns parent, children, height, depth
         root = d3.hierarchy(x.data, function(d) { return d.children; });
-        root.x0 = 0;
+        root.x0 = width/2;
         root.y0 = 0;
 
         // Attach options as a property of the instance
@@ -246,13 +251,13 @@ HTMLWidgets.widget({
 
         // Update the canvas with the new dimensions
         svg = svg.attr('transform', 'translate('
-        + options.margin.left + ',' + options.margin.top + ')')
+        + options.margin.left + ','+ options.margin.top*2 + ')')
 
         // width and height, corrected for margins
         var heightMargin = height - options.margin.top - options.margin.bottom,
         widthMargin = width - options.margin.left - options.margin.right;
         // declares a tree layout and assigns the size
-        treemap = d3.tree().size([heightMargin, widthMargin])
+        treemap = d3.tree().size([heightMargin, widthMargin*1.5])
         .separation(separationFun);
 
         // Calculate a reasonable link length, if not otherwise specified
@@ -260,7 +265,7 @@ HTMLWidgets.widget({
           options.linkResponsive = true
           options.linkLength = widthMargin / options.hierarchy.length
           if (options.linkLength < 8) {
-            options.linkLength = 5 // Offscreen or too short
+            options.linkLength = 10 // Offscreen or too short
           }
         }
 
@@ -312,8 +317,8 @@ HTMLWidgets.widget({
 });
 
 function separationFun(a, b) {
-  var width = a.data.SizeOfNode + b.data.SizeOfNode,
+  var height = a.data.SizeOfNode + b.data.SizeOfNode,
   // Scale distance to SizeOfNode, if defined
-  distance = (width || 50) / 50;
+  distance = (height || 5) / 300;
   return (a.parent === b.parent ? 1 : distance);
 };
